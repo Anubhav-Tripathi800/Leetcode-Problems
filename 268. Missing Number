@@ -1,0 +1,42 @@
+class Solution {
+public:
+    int missingNumber(vector<int>& nums) {
+        //Brute force
+        // int n=nums.size();
+        // for(int i=0;i<=n;i++){
+        //     int flag=0;
+        //     for(int j=0;j<n;j++){z
+        //         if (nums[j]==i){
+        //            flag=1;
+        //          break;
+        //         }
+                 
+        //         }
+        //          if (flag==0){
+        //            return i;
+        //          }
+                
+        //     }
+        //     return n;
+       // Better Solution 
+       int n=nums.size();
+       vector <int> hash(n+1,0);
+       for (int i=0;i<n;i++){ //loop for original array so it will run till n elelments 
+         hash[nums[i]]=1;
+        }
+       for (int i=0;i<=n;i++){ //loop for hash array so it will run till n-1 elelments as in hash array we take array of (size n+1)
+        if (hash[i]==0){
+        return i;
+       }
+       }
+       
+
+       
+
+       return n;
+}
+        
+
+        
+    
+};
