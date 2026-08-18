@@ -1,0 +1,46 @@
+class Solution {
+public:
+    long long continuousSubarrays(vector<int>& nums) {
+
+        int n = nums.size();
+
+        deque<int> maxi, mini;
+
+        long long ans = 0;
+        int left = 0;
+
+        for (int right = 0; right < n; right++) {
+
+            // Maintain decreasing deque for maximum
+            while (!maxi.empty() && nums[maxi.back()] <= nums[right]) {
+                maxi.pop_back();
+            }
+            maxi.push_back(right);
+
+            // Maintain increasing deque for minimum
+            while (!mini.empty() && nums[mini.back()] >= nums[right]) {
+                mini.pop_back();
+            }
+            mini.push_back(right);
+
+            // Window invalid -> move left
+            while (nums[maxi.front()] - nums[mini.front()] > 2) {
+
+                if (maxi.front() == left) {
+                    maxi.pop_front();
+                }
+
+                if (mini.front() == left) {
+                    mini.pop_front();
+                }
+
+                left++;
+            }
+
+            // Number of valid subarrays ending at right
+            ans += right - left + 1;
+        }
+
+        return ans;
+    }
+};
