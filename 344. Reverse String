@@ -1,0 +1,26 @@
+class Solution {
+public:
+    void reverseString(vector<char>& s) {
+        // Approach 1
+         int st=0;
+         int end=s.size()-1;
+        // int n=s.size();
+        // int ch;
+        // for(ch=0;ch<=n/2;ch++){
+        //     swap(s[st],s[end]);
+        //     st++;
+        //     end--;
+        // }
+        // return;
+        while (st<=end){
+            swap(s[st],s[end]);
+            st++;
+            end--;
+            
+        }
+        return;
+        
+    }
+};  
+
+  // Approach 2 (Prefered using while loop)
