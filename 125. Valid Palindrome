@@ -1,0 +1,33 @@
+class Solution {
+public:
+    bool isPalindrome(string s) {
+        int n=s.size();
+        int st=0;
+        int end=s.size()-1;
+        transform(s.begin(), s.end(), s.begin(), ::tolower);
+         
+        while(st<end){
+        // Ye poora part paces capital letters aur commas i.e extra sapces ko skip karne ke liye use kar rahe according to output of question
+            if(!isalnum(s[st])){
+                st++;
+                
+            }else(!isalnum(s[end])){
+                end--;
+            }
+
+            
+            elseif(s[st]==s[end]){
+                
+                st++;
+                end--;
+            }else{
+                return false;
+            }
+            
+        }
+        return true;
+        
+        
+        
+    }
+};
