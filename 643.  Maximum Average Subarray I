@@ -1,0 +1,19 @@
+//Brute force approach(Time complexity exceeds)
+(class Solution {
+public:
+    double findMaxAverage(vector<int>& nums, int k) {
+        int n=nums.size();
+        int maxsum=INT_MIN;
+        for (int i=0;i<=n-k;i++){
+            int sum=0;
+            for (int j=i;j<i+k;j++){
+                sum+=nums[j];
+                
+            }
+           maxsum= max(sum, maxsum);
+        
+        }
+        return (double)maxsum /k;
+        
+    }
+};
