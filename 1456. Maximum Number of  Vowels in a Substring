@@ -1,0 +1,22 @@
+// Brute force
+class Solution {
+public:
+    int maxVowels(string s, int k) {
+        int n=s.size();
+        int ans=0;
+        for (int i=0;i<=n-k;i++){
+            int count=0;
+        
+            for (int j=i;j<i+k;j++){
+                if (s[j]=='a'||s[j]=='e'||s[j]=='i'||s[j]=='o'||s[j]=='u'){
+                    count++;
+                }
+
+            }
+            ans=max(ans,count);
+
+        }
+        return ans;
+        
+    }
+};
