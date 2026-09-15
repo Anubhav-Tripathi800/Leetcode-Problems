@@ -1,0 +1,4 @@
+SELECT name
+FROM Customer
+WHERE referee_id != 2  // here you can also use the standard operator which stands for not equal to i.e "<>"
+   OR referee_id IS NULL;
