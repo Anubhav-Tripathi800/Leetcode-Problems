@@ -1,4 +1,3 @@
-// Brute force Approach
 class Solution {
 public:
     int minSubArrayLen(int target, vector<int>& nums) {
@@ -22,8 +21,27 @@ public:
         //     return 0;
 
         // return minLen;
+        // optimal approach
+        int n=nums.size();
+        
+        
+        int minlen=INT_MAX;
+        int left=0;
+        int sum=0;
+        for (int i=0;i<n;i++){
+            sum+=nums[i];
+            
+            while(sum>=target){
+                int len=i-left +1;
+                minlen=min(len,minlen);
+                sum-=nums[left];
+                left++;     
+       }
+    }
+            if (minlen==INT_MAX)
+            return 0;
+
+            return minlen;
+            
     }
 };
-
-
-// Optimal Approach
