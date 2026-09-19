@@ -1,25 +1,30 @@
 class Solution {
 public:
     vector<int> getConcatenation(vector<int>& nums) {
-        // Approach 1
-        int n=nums.size();
-         int newlen=2*n;
-         vector<int>ans(newlen);
-
-       
-         
-         for (int i =0 ;i<n;i++){
-             ans[i]=nums[i];
-         }
-         for (int i=n ;i<newlen;i++){
-             ans[i]=nums[i-n];
-         }
-         return ans;
-        // Approach 2
-        // for (int i =0;i<n;i++){
+        // Optimal or easy approach
+        // int n=nums.size();
+        // for (int i=0;i<n;i++){
         //     nums.push_back(nums[i]);
         // }
         // return nums;
+        // Other approach 
+        int n=nums.size();
+        vector<int> ans(2*n);
+        //First copy equal to original size of nums array
+        for (int i=0;i<n;i++){
+            ans[i]=nums[i];
+        }
+        // Second copy
+        for (int i=0;i<n;i++){
+            ans[i+n]=nums[i];
+        }
+        return ans;
+            
+
+
+        
+            
+        
     }
 
   
