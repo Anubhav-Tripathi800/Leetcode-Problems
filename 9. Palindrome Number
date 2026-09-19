@@ -22,3 +22,30 @@ public:
         }
     }
 };
+
+
+Using long long
+class Solution {
+public:
+    bool isPalindrome(int x) {
+
+        int original = x;
+        long long reverse = 0;
+
+        while (x > 0) {
+
+            int digit = x % 10;              // 121 % 10 = 1
+
+            reverse = reverse * 10 + digit;  // 0*10 + 1 = 1
+
+            x = x / 10;                      // 121/10 = 12
+        }
+
+        if (reverse == original) {
+            return true;
+        }
+        else {
+            return false;
+        }
+    }
+};
