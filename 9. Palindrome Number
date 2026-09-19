@@ -1,25 +1,24 @@
 class Solution {
 public:
     bool isPalindrome(int x) {
-        if (x < 0) {
-            return false;
-        }
 
         int original = x;
         int reverse = 0;
 
         while (x > 0) {
-            int digit = x % 10;
 
-            // Check overflow before multiplying by 10
-            if (reverse > (INT_MAX - digit) / 10) {
-                return false;
-            }
+            int digit = x % 10;              // 121 % 10 = 1 iske baad "long long" use karna pad sakta kyonki int ki range padegi
 
-            reverse = reverse * 10 + digit;
-            x = x / 10;
+            reverse = reverse * 10 + digit;  // 0*10 + 1 = 1
+
+            x = x / 10;                      // 121/10 = 12
         }
 
-        return original == reverse;
+        if (reverse == original) {
+            return true;
+        }
+        else {
+            return false;
+        }
     }
 };
