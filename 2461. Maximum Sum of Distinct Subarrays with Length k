@@ -1,0 +1,60 @@
+// class Solution {
+// public:
+//     long long maximumSubarraySum(vector<int>& nums, int k) {
+        // Brute force Approach        
+        // int n=nums.size();
+        // long long maxi=0;
+        
+        // for (int i=0;i<=n-k;i++){ 
+        //  set<int> s;
+        //     bool isdup=false;
+        //      long long sum=0;
+        //     for (int j=i;j<=i+k-1;j++){
+        //         if(s.contains(nums[j])){
+        //         isdup=true;
+        //         break;
+        //         }
+        //         s.insert(nums[j]);
+        //         sum=sum+nums[j];
+        //     }
+        //     if(!isdup){
+        //         maxi=max(maxi,sum);
+                
+        //     }
+        // }
+        // return maxi;
+    //}
+//};
+   // Optimal Approach
+   class Solution {
+public:
+    long long maximumSubarraySum(vector<int>& nums, int k) {
+        int n = nums.size();
+        long long sum = 0, maxi = 0;
+        unordered_map<int, int> freq;
+
+        for (int i = 0; i < k; i++) {
+            sum += nums[i];
+            freq[nums[i]]++;
+        }
+
+        if (freq.size() == k)
+            maxi = sum;
+
+        for (int i = k; i < n; i++) {
+            sum += nums[i];
+            freq[nums[i]]++;
+
+            sum -= nums[i - k];
+            freq[nums[i - k]]--;
+
+            if (freq[nums[i - k]] == 0)
+                freq.erase(nums[i - k]);
+
+            if (freq.size() == k)
+                maxi = max(maxi, sum);
+        }
+
+        return maxi;
+    }
+};
