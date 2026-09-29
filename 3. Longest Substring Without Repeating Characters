@@ -1,0 +1,24 @@
+class Solution {
+public:
+    // Brute force Approach
+    int lengthOfLongestSubstring(string s) {
+        int n=s.size();
+        int maxlen=0;
+
+        for (int i=0;i<n;i++){
+            int hash[256]={0};
+
+            for (int j=i;j<n;j++){
+                if (hash[s[j]]==1){// Agar array already visited hai to ham break kar denge. 1 implement karta hai ki already visited hai. Ye tab use me aata hai jab ham string me iterate kar rahe hote hain aur tab hame duplicate character milta hai, to wahi pe loop break ho jaata hai.
+                    break;
+                }
+
+                hash[s[j]]=1;
+                int len=j-i+1;
+                maxlen=max(len,maxlen);
+            }
+        }
+
+        return maxlen;
+    }
+};+
